@@ -3,11 +3,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { ConfigModule } from '@nestjs/config';
-import serverConfig from './config/serverConfig';
-import dbConfig from './config/dbConfig';
+import serverConfig from '../config/serverConfig';
+import dbConfig from '../config/dbConfig';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TypeOrmConfiguration } from './config/typeOrmConfig';
-import { UserModule } from './user/user.module';
+import { TypeOrmConfiguration } from '../config/typeOrmConfig';
+import { UserModule } from '../modules/user/user.module';
 
 @Module({
   imports: [
