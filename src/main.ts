@@ -2,12 +2,14 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as csurf from 'csurf';
 import * as cookieParser from 'cookie-parser';
+import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  app.enableCors();
-  app.use(cookieParser());
-  app.use(csurf({ cookie: { sameSite: true } }));
-  await app.listen(3001);
+  const articlesCrudApp = await NestFactory.create(AppModule);
+  articlesCrudApp.enableCors();
+  articlesCrudApp.use(cookieParser());
+  articlesCrudApp.use(csurf({ cookie: { sameSite: true } }));
+  const configService = articlesCrudApp.get<ConfigService>(ConfigService);
+  await articlesCrudApp.listen(configService.get('serverConfig.port'));
 }
 bootstrap();
