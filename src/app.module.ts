@@ -5,6 +5,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
 import { ConfigModule } from '@nestjs/config';
 import serverConfig from './config/serverConfig';
 import dbConfig from './config/dbConfig';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import dbConfig from './config/dbConfig';
       envFilePath: ['.env'],
       load: [serverConfig, dbConfig],
     }),
+    TypeOrmModule.forRoot(),
   ],
   controllers: [AppController],
   providers: [AppService],
