@@ -9,8 +9,8 @@ interface DatabaseConfigReturnType {
   password?: string;
 }
 
-const DatabaseConfiguration = (): DatabaseConfigReturnType => ({
-  type: process.env.DB_TYPE as 'postgres',
+export const DatabaseConfiguration = (): DatabaseConfigReturnType => ({
+  type: process.env.DB_TYPE as any,
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   dbname: process.env.DB_NAME,
