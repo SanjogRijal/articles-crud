@@ -7,6 +7,7 @@ import serverConfig from './config/serverConfig';
 import dbConfig from './config/dbConfig';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypeOrmConfiguration } from './config/typeOrmConfig';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { TypeOrmConfiguration } from './config/typeOrmConfig';
       load: [serverConfig, dbConfig],
     }),
     TypeOrmModule.forRoot(TypeOrmConfiguration()),
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
