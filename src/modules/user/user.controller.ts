@@ -34,7 +34,6 @@ export class UserController {
       panNumber: {},
     },
   })
-  // NestJS Controller
   @Post()
   async createUser(
     @Body(
