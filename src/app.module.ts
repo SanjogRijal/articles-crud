@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import serverConfig from './config/serverConfig';
 import dbConfig from './config/dbConfig';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmConfiguration } from './config/typeOrmConfig';
 
 @Module({
   imports: [
@@ -19,7 +20,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       envFilePath: ['.env'],
       load: [serverConfig, dbConfig],
     }),
-    TypeOrmModule.forRoot(),
+    TypeOrmModule.forRoot(TypeOrmConfiguration()),
   ],
   controllers: [AppController],
   providers: [AppService],
