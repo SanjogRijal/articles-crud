@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import { DataSource, Repository } from 'typeorm';
 import { Injectable } from '@nestjs/common';
+import { DataSource, Repository } from 'typeorm';
 import { type CreateUserDTO } from '../dto/create-user.dto';
 import UserEntity from '../entities/user.entity';
 
