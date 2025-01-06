@@ -6,12 +6,12 @@ import {
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
-import CreateAuthDTO from './dto/auth.dto';
-import AuthEntity from './entities/auth.entity';
-import AuthRepository from './repository/auth.repository';
-import { hashData, compareHash } from './utils/index.util';
-import { type SignupSigninResponseDTO } from './dto/signup_signin-response.dto';
-import { type SigninRequestDTO } from './dto/signup-signin.dto';
+import CreateAuthDTO from '../dto/auth.dto';
+import { type SigninRequestDTO } from '../dto/signup-signin.dto';
+import { type SignupSigninResponseDTO } from '../dto/signup_signin-response.dto';
+import AuthEntity from '../entities/auth.entity';
+import AuthRepository from '../repository/auth.repository';
+import { compareHash, hashData } from '../utils/index.util';
 
 @Injectable()
 export class AuthService {

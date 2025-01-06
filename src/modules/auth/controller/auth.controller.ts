@@ -19,19 +19,19 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { Request } from 'express';
-import { CreateUserDTO } from '../user/dto/create-user.dto';
-import { UserService } from '../user/user.service';
-import { AuthService } from './auth.service';
-import CreateAuthDTO from './dto/auth.dto';
-import { SigninRequestDTO } from './dto/signup-signin.dto';
+import { CreateUserDTO } from '../../user/dto/create-user.dto';
+import { UserService } from '../../user/user.service';
+import CreateAuthDTO from '../dto/auth.dto';
+import { SigninRequestDTO } from '../dto/signup-signin.dto';
 import {
-  SignupSigninResponseDTO,
   SignupSigninErrorResponseDTO,
-} from './dto/signup_signin-response.dto';
-import { loggedInEvent } from './events/events';
-import { AccessTokenGuard } from './guards/AccessTokenGuard.guard';
-import { RefreshTokenGuard } from './guards/RefreshTokenGuard.guard';
-import { LOGIN_EVENT_CALLBACKS } from './events/event-callbacks';
+  SignupSigninResponseDTO,
+} from '../dto/signup_signin-response.dto';
+import { LOGIN_EVENT_CALLBACKS } from '../events/event-callbacks';
+import { loggedInEvent } from '../events/events';
+import { AccessTokenGuard } from '../guards/AccessTokenGuard.guard';
+import { RefreshTokenGuard } from '../guards/RefreshTokenGuard.guard';
+import { AuthService } from '../service/auth.service';
 
 @ApiTags('AUTH')
 @Controller('auth')
