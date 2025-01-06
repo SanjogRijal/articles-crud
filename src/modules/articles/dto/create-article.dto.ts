@@ -1,5 +1,5 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsNotEmpty, IsString, MinLength } from 'class-validator';
 
 export default class CreateAuthDTO {
   @ApiProperty()
@@ -10,13 +10,16 @@ export default class CreateAuthDTO {
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
+  @MinLength(110)
   content: string;
 
   @ApiProperty()
   @IsNotEmpty()
-  @IsNumber()
-  coverImage: number;
+  @IsString()
+  coverImage: string;
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({
+    type: 'string',
+  })
   source?: string;
 }
