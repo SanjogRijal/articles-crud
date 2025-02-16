@@ -25,6 +25,11 @@ export class ArticleEntity {
   })
   source: string;
 
+  @Column({
+    default: false,
+  })
+  isDeleted: boolean;
+
   @CreateDateColumn()
   createdAt: Date;
 

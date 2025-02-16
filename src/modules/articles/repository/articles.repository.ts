@@ -28,4 +28,22 @@ export class ArticlesRepository {
     }
     return singleArticle;
   };
+
+  updateArticle = async (id: number, body: Partial<ArticleEntity>) => {
+    const singleArticle = await this.findOne(id);
+
+    if (!singleArticle) {
+      return new HttpException('Article Not Found', HttpStatus.NOT_FOUND);
+    }
+    const updatedArticle = this.articlesRepository.update(id, body);
+    return updatedArticle;
+  };
+
+  softDeleteArticle = async (id: number) => {
+    const singleArticle = await this.findOne(id);
+    if (!singleArticle) {
+      return new HttpException('Article Not Found', HttpStatus.NOT_FOUND);
+    }
+    const deletedArticle = await this.updateArticle(id, { isDeleted: true });
+  };
 }

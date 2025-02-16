@@ -18,11 +18,10 @@ export class ArticlesService {
     return this.articlesRepository.findOne(id);
   }
 
-  update(id: number, updateArticleDto: UpdateArticleDto) {
-    return `This action updates a #${id} article`;
+  updateArticle(id: number, updateArticleDto: UpdateArticleDto) {
+    return this.articlesRepository.updateArticle(id, updateArticleDto);
   }
-
-  remove(id: number) {
-    return `This action removes a #${id} article`;
+  softDeleteArticle(id: number) {
+    return this.articlesRepository.updateArticle(id, { isDeleted: true });
   }
 }
