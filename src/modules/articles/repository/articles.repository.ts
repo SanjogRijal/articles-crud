@@ -5,13 +5,13 @@ import CreateArticleDto from '../dto/create-article.dto';
 import { ArticleEntity } from '../entities/article.entity';
 
 @Injectable()
-export class ArticlesRepositor {
+export class ArticlesRepository {
   constructor(
     @InjectRepository(ArticleEntity)
     private readonly articlesRepository: Repository<ArticleEntity>,
   ) {}
   saveArticles = (article: CreateArticleDto): Promise<ArticleEntity> => {
-    const newArticle = this.articlesRepository.create();
+    const newArticle = this.articlesRepository.create(article);
     return this.articlesRepository.save(newArticle);
   };
 

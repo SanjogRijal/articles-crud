@@ -1,14 +1,15 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { ThrottlerModule } from '@nestjs/throttler';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ArticlesModule } from 'src/modules/articles/articles.module';
+import dbConfig from '../config/dbConfig';
+import serverConfig from '../config/serverConfig';
+import { TypeOrmConfiguration } from '../config/typeOrmConfig';
+import { AuthModule } from '../modules/auth/auth.module';
+import { UserModule } from '../modules/user/user.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ThrottlerModule } from '@nestjs/throttler';
-import { ConfigModule } from '@nestjs/config';
-import serverConfig from '../config/serverConfig';
-import dbConfig from '../config/dbConfig';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { TypeOrmConfiguration } from '../config/typeOrmConfig';
-import { UserModule } from '../modules/user/user.module';
-import { AuthModule } from '../modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { AuthModule } from '../modules/auth/auth.module';
     TypeOrmModule.forRoot(TypeOrmConfiguration()),
     UserModule,
     AuthModule,
+    ArticlesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
